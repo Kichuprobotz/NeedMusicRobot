@@ -1,16 +1,13 @@
-FROM archlinux/archlinux:latest
+FROM python:3.10
 
-# Install the base packages and any dependencies
-RUN pacman -Syu --noconfirm && pacman -S --noconfirm python-pip git
+RUN apt update && apt upgrade -y
+RUN apt install git -y
+COPY requirements.txt /requirements.txt
 
-# Changing the working directory
+RUN cd /
+RUN pip install -U pip && pip install -U -r requirements.txt
 WORKDIR /app
 
-# Copy the requirements.txt file into working directory and install the packages
-COPY requirements.txt .
-RUN pip3 install -U -r requirements.txt
-
-# Copy all the files into working directory
 COPY . .
 
-CMD ["python3", "-m", "mbot"]
+CMD ["python", "bot.py"]
