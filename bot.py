@@ -9,11 +9,9 @@ logging.getLogger("imdbpy").setLevel(logging.ERROR)
 
 from pyrogram import Client, __version__
 from pyrogram.raw.all import layer
-from info import SESSION, API_ID, API_HASH, BOT_TOKEN, LOG_STR, LOG_CHANNEL, PORT
-from utils import temp
+from config import SESSION, API_ID, API_HASH, BOT_TOKEN, LOG_GROUP 
 from typing import Union, Optional, AsyncGenerator
 from pyrogram import types
-from Script import script 
 from datetime import date, datetime 
 import pytz
 from aiohttp import web
